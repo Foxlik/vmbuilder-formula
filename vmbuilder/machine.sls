@@ -5,7 +5,7 @@
 
 {%- for lvitem in vmbuilder.get("lvm", []) %}
 {{ lvitem.dev  ~ '_' ~ loop.index0 }}:
-  lvm.pv_present
+  lvm.pv_present:
     - name: {{ lvitem.dev }}
 {{ lvitem.vgname  ~ '_' ~ loop.index0 }}:
   lvm.vg_present:
