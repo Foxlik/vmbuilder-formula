@@ -3,8 +3,10 @@ vmbuilder:
   name: "testmachine"
   vgname: "hypervisor_vg"
   lvm:
-    - vgname: "hypervisor_root"
-      dev: "/dev/sda"
+    - vgname: "hypervisor_vg"
+      devices: 
+        - "/dev/sdb5"
+        - "/dev/sda"
   release: "trusty"
   hostname: "testmachine"
   domain: "example.com"
