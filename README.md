@@ -2,7 +2,6 @@ vmbuilder-formula
 =================
 This formula create vm machine using vmbuilder.
 
-.. note::
 
     See the full `Salt Formulas installation and usage instructions
     <http://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html>`_.
@@ -10,19 +9,16 @@ This formula create vm machine using vmbuilder.
 Install
 =================
 
-.. note::
 
-gitfs:
-  - https://github.com/fessoga5/vmbuilder-formula.git
+    gitfs:
+      - https://github.com/fessoga5/vmbuilder-formula.git
 
-or copy vmbuilder dir in /srv/salt
+or copy vmbuilder dir in /srv/salt.
+
 You should copy states in /srv/salt, because formula using my states, kvm.py
 
 Available states
 ================
-
-.. contents::
-    :local:
 
 ``vmbuilder``
 -------------
