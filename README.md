@@ -2,12 +2,13 @@ vmbuilder-formula
 =================
 This formula create vm machine using vmbuilder.
 
+.. note::
 
     See the full `Salt Formulas installation and usage instructions
     <http://docs.saltstack.com/en/latest/topics/development/conventions/formulas.html>`_.
 
 Install
-=================
+=======
 
 
     gitfs:
@@ -31,5 +32,5 @@ Installs the ``vmbuilder`` and package and service for libvirt.
 Create and confire virtual machine from pillar.
 
 Support
-================
+=======
 Check in Ubuntu 14.04
