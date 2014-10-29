@@ -13,7 +13,7 @@ Install
 
 
     gitfs:
-      - https://github.com/fessoga5/vmbuilder-formula.git
+      - https://github.com/saltstack-formulas/vmbuilder-formula.git
 
 or copy vmbuilder dir in /srv/salt.
 
