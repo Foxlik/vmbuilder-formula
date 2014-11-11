@@ -5,11 +5,11 @@
 
 {%- for lvitem in vmbuilder.get("lvm", []) %}
 {%- for devitem in lvitem.devices %}
-{{ devitem  ~ '_' ~ loop.index0 }}:
+{{ devitem  ~ '_' ~ vmbuilder.get("name") ~ '_' ~ loop.index0 }}:
   lvm.pv_present:
     - name: {{ devitem }}
 {% endfor %}
-{{ lvitem.vgname  ~ '_' ~ loop.index0 }}:
+{{ lvitem.vgname  ~ '_' ~ vmbuilder.get("name") }}:
   lvm.vg_present:
     - name: {{ lvitem.vgname }}
     - devices:
