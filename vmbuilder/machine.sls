@@ -1,6 +1,7 @@
 # vim: sts=2 ts=2 sw=2 expandtab autoindent
-{% from "vmbuilder/map.jinja" import vmbuilder with context %}
+{% set vmbuilderall = salt['pillar.get']('vmbuilder') %}
 
+{% for vmbuilder in vmbuilderall %}
 {%- if vmbuilder.get("name") %}
 
 {%- for lvitem in vmbuilder.get("lvm", []) %}
@@ -58,4 +59,4 @@
       - lvm: {{ vmbuilder.get("vgname") }}
 {% endfor %}
 {% endif %}
-
+{% endfor %}

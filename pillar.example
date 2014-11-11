@@ -1,24 +1,46 @@
 # vim: sts=2 ts=2 sw=2 et ai
 vmbuilder:
-  name: "testmachine"
-  vgname: "hypervisor_vg"
-  lvm:
-    - vgname: "hypervisor_vg"
-      devices: 
-        - "/dev/sdb5"
-        - "/dev/sda"
-  release: "trusty"
-  hostname: "testmachine"
-  domain: "example.com"
-  saltmaster: "saltmaster01"
-  mgmtiface: "eth0"
-  network:
-    - dev: "eth0"
-      mode: "dhcp"
-      hyperv: "br0"
-  disks:
-    - lvname: "testmachine_root"
-      rootsize: "30000"
-      swapsize: "2000"
-      allsize: "32G"
-  proxy: "aptcacher.example.com" 
+  - name: "testmachine"
+    vgname: "hypervisor_vg"
+    lvm:
+      - vgname: "hypervisor_vg"
+        devices: 
+          - "/dev/sdb5"
+          - "/dev/sda"
+    release: "trusty"
+    hostname: "testmachine"
+    domain: "example.com"
+    saltmaster: "saltmaster01"
+    mgmtiface: "eth0"
+    network:
+      - dev: "eth0"
+        mode: "dhcp"
+        hyperv: "br0"
+    disks:
+      - lvname: "testmachine_root"
+        rootsize: "30000"
+        swapsize: "2000"
+        allsize: "32G"
+    proxy: "aptcacher.example.com" 
+  - name: "testmachine2"
+    vgname: "hypervisor_vg"
+    lvm:
+      - vgname: "hypervisor_vg"
+        devices: 
+          - "/dev/sdb5"
+          - "/dev/sda"
+    release: "trusty"
+    hostname: "testmachine2"
+    domain: "example.com"
+    saltmaster: "saltmaster01"
+    mgmtiface: "eth0"
+    network:
+      - dev: "eth0"
+        mode: "dhcp"
+        hyperv: "br0"
+    disks:
+      - lvname: "testmachine2_root"
+        rootsize: "30000"
+        swapsize: "2000"
+        allsize: "32G"
+    proxy: "aptcacher.example.com" 
