@@ -11,4 +11,4 @@ kvm:
       # for network bondings
       - ifenslave
       - vlan
-      - python-vm-builder 
+      - ubuntu-vm-builder 
