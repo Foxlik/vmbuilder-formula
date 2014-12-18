@@ -1,7 +1,7 @@
 # vim: sts=2 ts=2 sw=2 expandtab autoindent
 {% set vmbuilderall = salt['pillar.get']('vmbuilder') %}
 
-{% for vmbuilder in vmbuilderall %}
+{% for vmname,vmbuilder in vmbuilderall.iteritems() %}
 {%- if vmbuilder.get("name") %}
 
 {%- for lvitem in vmbuilder.get("lvm", []) %}
