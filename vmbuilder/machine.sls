@@ -20,7 +20,7 @@
 {% endfor %}
 
 {{ vmbuilder.get("name") }}:
-  kvm:
+  vmbuilder:
     - installed
     - autostart: True
     - os: ubuntu

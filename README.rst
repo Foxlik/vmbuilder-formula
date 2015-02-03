@@ -17,7 +17,7 @@ Install
 
 or copy vmbuilder dir in /srv/salt.
 
-You should copy states in /srv/salt, because formula using my states, kvm.py
+You should copy states in /srv/salt, because formula using my states, vmbuilder.py
 
 Available states
 ================
