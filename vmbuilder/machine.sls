@@ -5,7 +5,7 @@
 {%- if vmbuilder.get("name") %}
 
 {%- for lvitem in vmbuilder.get("lvm", []) %}
-{%- for devitem in lvitem.devices %}
+{%- for devitem in lvitem.devices.split(',') %}
 {{ devitem  ~ '_' ~ vmbuilder.get("name") ~ '_' ~ loop.index0 }}:
   lvm.pv_present:
     - name: {{ devitem }}
