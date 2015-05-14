@@ -13,10 +13,7 @@
 {{ lvitem.vgname  ~ '_' ~ vmbuilder.get("name") }}:
   lvm.vg_present:
     - name: {{ lvitem.vgname }}
-    - devices:
-    {%- for devitem in lvitem.devices %}
-      - {{ devitem }} 
-    {%- endfor %}
+    - devices: {{ lvitem.devices }}
 {% endfor %}
 
 {{ vmbuilder.get("name") }}:
