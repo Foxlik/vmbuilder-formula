@@ -23,6 +23,38 @@ def chroot_command_on_host(commands):
     comdat = __salt__['file.set_mode'](tmpConfigFilename, 755)
     return tmpConfigFilename
 
+def testinstalled (
+    name,
+    os='ubuntu',
+    release='trusty',
+    hostname='vm1',
+    domain='defaultdomain',
+    arch="amd64",
+    addToLibvirt=True,
+    mirror=False, # mirror, that will be placed in vm apt conf
+    installMirror=False, # mirror only for installation process
+    installMinion=True,
+    hdddriver="virtio",
+    mgmtiface="eth0",
+    proxy=False,
+    network={},
+    disks=[],
+    autostart=False,
+    saltmaster="saltmaster01.core.irknet.lan"):
+
+    import uuid
+    ret = {'name': name,
+    'result': False,
+    'changes': {},
+    'comment': ''}
+    command ='touch /tmp/test3  && touch /tmp/test6'
+    tmpConfigFilename = "/tmp/"+str(uuid.uuid4())
+    postInstallScript = '/bin/sh -c "echo test > /tmp/1"'.format(tmpConfigFilename)
+    comdat = __salt__['cmd.run_all'](postInstallScript)
+    ret['result'] = False
+    ret['comment'] = "Test vmbulder run: return: {0}, stderr: {1}, stdout: {2}".format(comdat['retcode'], comdat['stderr'], comdat['stdout'])
+    return ret
+
 def installed (
     name,
     os='ubuntu',
