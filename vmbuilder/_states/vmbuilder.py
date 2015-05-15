@@ -40,7 +40,7 @@ def installed (
     network={},
     disks=[],
     autostart=False,
-    saltmaster="saltmaster01.core.irknet.lan"):
+    saltmaster="saltmaster01"):
 
     name = ' '.join(name.strip().split())
     ret = {'name': name,
