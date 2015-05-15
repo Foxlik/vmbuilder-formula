@@ -27,6 +27,39 @@ chmod +x {1}
     else:
         return tmpConfigFilename
 
+def testinstalled (
+    name,
+    os='ubuntu',
+    release='trusty',
+    hostname='vm1',
+    domain='defaultdomain',
+    arch="amd64",
+    addToLibvirt=True,
+    mirror=False, # mirror, that will be placed in vm apt conf
+    installMirror=False, # mirror only for installation process
+    installMinion=True,
+    hdddriver="virtio",
+    mgmtiface="eth0",
+    proxy=False,
+    network={},
+    disks=[],
+    autostart=False,
+    saltmaster="saltmaster01.core.irknet.lan"):
+
+    import uuid
+    command ='touch /tmp/test3  && touch /tmp/test6'
+    tmpConfigFilename = "/tmp/"+str(uuid.uuid4())
+    postInstallScript = '''
+echo "#!/bin/bash
+chroot \$1 /bin/bash -c '{0} && exit'" > {1}
+chmod +x {1}
+    '''.format(command, tmpConfigFilename)
+    comdat = __salt__['cmd.run_all'](postInstallScript)
+    ret['result'] = False
+    ret['comment'] = "Test vmbulder run: return: {0}, stderr: {1}, stdout: {2}".format(comdat['retcode'], comdat['stderr'], comdat['stdout'])
+    return ret
+
+
 def installed (
     name,
     os='ubuntu',
