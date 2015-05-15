@@ -16,16 +16,12 @@ def chroot_command_on_host(commands):
     import uuid
     command =' && '.join(commands)
     tmpConfigFilename = "/tmp/"+str(uuid.uuid4())
-    postInstallScript = '''
-echo "#!/bin/bash
-chroot \$1 /bin/bash -c '{0} && exit'" > {1}
-chmod +x {1}
-    '''.format(command, tmpConfigFilename)
-    comdat = __salt__['cmd.run_all'](postInstallScript)
-    if comdat['retcode']:
-        raise VmbuilderException("Error creating vmbuilder afterinstall script: {0}".format(comdat['stderr'])) 
-    else:
-        return tmpConfigFilename
+    postInstallScript = """#!/bin/bash
+    chroot $1 /bin/bash -c '{0} && exit'""".format(command)
+
+    comdat = __salt__['file.write'](tmpConfigFilename, postInstallScript)
+    comdat = __salt__['file.set_mode'](tmpConfigFilename, 755)
+    return tmpConfigFilename
 
 def installed (
     name,
@@ -44,7 +40,7 @@ def installed (
     network={},
     disks=[],
     autostart=False,
-    saltmaster="saltmaster01.core.irknet.lan"):
+    saltmaster="saltmaster01"):
 
     name = ' '.join(name.strip().split())
     ret = {'name': name,
