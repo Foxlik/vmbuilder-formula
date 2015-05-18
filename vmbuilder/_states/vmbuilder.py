@@ -49,7 +49,7 @@ def installed (
     'comment': ''}
     try:
         # check if vm is already exists
-        checkcmd = __salt__['cmd.run_all']("/usr/bin/virsh list --all | grep -w {0}".format(hostname))
+        checkcmd = __salt__['cmd.run_all']("/usr/bin/virsh list --all | grep -w {0}".format(hostname), python_shell=True)
         if not checkcmd['retcode']:
             ret['result'] = True
             return ret
@@ -83,7 +83,7 @@ def installed (
   pre-up ifconfig eth0 up\\\" >> /etc/network/interfaces""".format(mgmtiface))
 
         # Удаляем предыдущий вариант vm
-        comdat = __salt__['cmd.run_all']("virsh destroy {0} && virsh undefine {0}".format(hostname))
+        comdat = __salt__['cmd.run_all']("virsh destroy {0} && virsh undefine {0}".format(hostname), python_shell=True)
         if comdat['retcode']:
             ret['changes']['If exists, destroying previous vm with the same name'] = "Failed: {0}".format(comdat['stderr'])
         else:
