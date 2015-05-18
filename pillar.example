@@ -4,7 +4,9 @@ vmbuilder:
     vgname: "hypervisor_vg"
     lvm:
       - vgname: "hypervisor_vg"
-        devices: "/dev/sdb5,/dev/sda"
+        devices:
+          - /dev/sdb5
+          - /dev/sda
     release: "trusty"
     hostname: "testmachine"
     domain: "example.com"
@@ -24,7 +26,9 @@ vmbuilder:
     vgname: "hypervisor_vg"
     lvm:
       - vgname: "hypervisor_vg"
-        devices: "/dev/sdb5,/dev/sda"
+        devices:
+          - /dev/sdb5
+          - /dev/sda
     release: "trusty"
     hostname: "testmachine2"
     domain: "example.com"
