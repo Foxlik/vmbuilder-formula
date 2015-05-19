@@ -40,7 +40,7 @@ def installed (
     network={},
     disks=[],
     autostart=False,
-    saltmaster="saltmaster01"):
+    saltmaster="salt"):
 
     name = ' '.join(name.strip().split())
     ret = {'name': name,
